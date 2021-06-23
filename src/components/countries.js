@@ -9,9 +9,9 @@ class Countries extends Component {
      super(props)
      this.state = {
        country: [],
-       query: " ",
-       searchQuery:"https://restcountries.eu/rest/v2/all"
+       query: " "
      }
+      this.handleChange = this.handleChange.bind(this)
    }
    handleChange(e){
      e.preventDefault()
@@ -19,12 +19,8 @@ class Countries extends Component {
      console.log(e.target.value);
    }
 
-   handleSubmit(e){
-     e.preventDefault()
-     console.log(this.state.query);
-   }
    componentDidMount(){
-     axios.get(this.state.searchQuery)
+     axios.get("https://restcountries.eu/rest/v2/all")
      .then(response=>{
        this.setState({
          country:response.data
@@ -37,11 +33,11 @@ class Countries extends Component {
     const { country, query } = this.state
     return (
       <div>
-      <Search query={query} change={this.handleChange} submit={this.handleSubmit}/>
+      <Search query={query} change={this.handleChange} />
         {
-          country.length ? country.map((data, index)=>{
+          country.length ? country.map(data=>{
             return(
-              <Card data={data} key={index}/>
+              <Card data={data} key={data.data.numericCode}/>
             )
           }) : <div>LOADING...</div>
         }
