@@ -16,7 +16,6 @@ class Countries extends Component {
    handleChange(e){
      e.preventDefault()
      this.setState({query: e.target.value})
-     console.log(e.target.value);
    }
 
    componentDidMount(){
@@ -31,11 +30,12 @@ class Countries extends Component {
    }
   render(){
     const { country, query } = this.state
+    const filtered = country.filter(item=>item.name.toLowerCase().includes(query.toLowerCase()))
     return (
       <div>
       <Search query={query} change={this.handleChange} />
         {
-          country.length ? country.map(data=>{
+          country.length ? filtered.map(data=>{
             return(
               <Card data={data} key={data.data.numericCode}/>
             )
