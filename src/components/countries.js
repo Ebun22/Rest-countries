@@ -37,7 +37,7 @@ class Countries extends Component {
         {
           country.length ? filtered.map(data=>{
             return(
-              <Card data={data} key={data.data.numericCode}/>
+              <Card data={data} key={data.data.numericCode} click={this.props. click} />
             )
           }) : <div>LOADING...</div>
         }
