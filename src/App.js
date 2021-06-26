@@ -13,9 +13,21 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
    
+  handleClick(){
+    this.setState((prev)=>(console.log(prev),{
+      count: prev.count + 1
+    }))
+  }
+
    render(){
     return (
-      <Countries />
+      <div>
+        {this.state.count > 0 ?
+          console.log("details") :
+          <Countries click={this.handleClick}/>
+        }
+
+      </div>
     )
 
   }
