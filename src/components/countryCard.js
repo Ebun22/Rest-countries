@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 class Card extends Component {
   render(){
-    const { data } = this.props
+    const { data, click } = this.props
       return(
-        <div>
+        <div onClick={click}>
           <div className="img">
             <img src={data.flag} alt="flag" />
           </div>

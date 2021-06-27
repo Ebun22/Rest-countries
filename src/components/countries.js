@@ -16,6 +16,14 @@ class Countries extends Component {
    handleChange(e){
      e.preventDefault()
      this.setState({query: e.target.value})
+     this.handleChange = this.handleChange.bind(this)
+   }
+   handleChange(e){
+       e.preventDefault()
+     this.setState({
+       query: e.target.value
+     })
+
    }
 
    componentDidMount(){
@@ -28,16 +36,17 @@ class Countries extends Component {
      })
      .catch(error=> console.log(error))
    }
+
   render(){
     const { country, query } = this.state
-    const filtered = country.filter(item=>item.name.toLowerCase().includes(query.toLowerCase()))
+    const search = country.filter(item=>item.name.toLowerCase().includes(query.toLowerCase()))
     return (
       <div>
-      <Search query={query} change={this.handleChange} />
+      <Search change={this.handleChange} />
         {
-          country.length ? filtered.map(data=>{
+          country.length ? search.map((data)=>{
             return(
-              <Card data={data} key={data.data.numericCode} click={this.props. click} />
+              <Card data={data} key={data.numericCode} click={this.props. click}/>
             )
           }) : <div>LOADING...</div>
         }
