@@ -26,8 +26,13 @@ class Info extends Component {
                   </div>
                   <div className="r-left">
                     <p>Top Level Domain: <span>{detail.topLevelDomain}</span></p>
-                    <p>Currencies: <span>{detail.currencies[0].name}</span></p>
-                    
+                    <p>Currencies: <span>{detail.currencies.map(curr=> curr.name)}</span></p>
+                    <p>Languages: <span>{detail.languages.map(lan=> lan.name)}</span></p>
+                  </div>
+                  <div className="border">
+                    <p>Borders: <span>{
+                      detail.borders.map((bor,index)=> <button>{bor}</button>)
+                    }</span></p>
                   </div>
                 </div>
               </div>

@@ -8,7 +8,8 @@ class Details extends Component {
      super(props)
      this.state = {
        count: 0,
-       details: []
+       details: [],
+       name:this.props.info
      }
    }
 
@@ -19,7 +20,7 @@ class Details extends Component {
    }
 
    componentDidMount(){
-     axios.get(`https://restcountries.eu/rest/v2/name/${this.props.info}`)
+     axios.get(`https://restcountries.eu/rest/v2/name/${this.state.name}`)
      .then(response=>{
        this.setState({
          details:response.data
