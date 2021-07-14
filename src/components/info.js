@@ -30,8 +30,8 @@ class Info extends Component {
                     <p>Languages: <span>{detail.languages.map(lan=> lan.name)}</span></p>
                   </div>
                   <div className="border">
-                    <p>Borders: <span>{
-                      detail.borders.map((bor,index)=> <button>{bor}</button>)
+                    <p>Border countries: <span>{
+                      detail.borders.map((bor,index)=> <button key={index} onClick={this.props.click}>{bor}</button>)
                     }</span></p>
                   </div>
                 </div>
