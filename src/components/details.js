@@ -1,25 +1,27 @@
-import React from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
 import Info from './info';
 
-const Details=({country, info, border, handleBorder, decrement })=>{
-  const search = []
-  search.push(country.find(item=>{
-      //console.log(item.name.toLowerCase().startsWith(info.toLowerCase().trim()))
+class Details extends Component{
+  render(){
+    const {country, info, border, handleBorder, decrement, count } = this.props
+  const search = country.filter(item=>{
+        return item.name.toLowerCase().includes(info.toLowerCase().trim())
+      })
+      const searchborder = country.filter(item=>{
+        return (item.alpha3Code.toLowerCase().includes(border.toLowerCase()))
+      })
+      console.log(count)
       return (
-      item.name.toLowerCase().startsWith(info.toLowerCase().trim()),
-      item.alpha3Code.toLowerCase().includes(border.toLowerCase())
+        <div class="px-16">
+          <button onClick={decrement} class="bg-gray-700 sm:my-16 sm:py-2 px-4 md:pt-12 rounded text-sm pr-8">Back</button>
+          {
+            <Info details={!border ? search : searchborder} click={handleBorder} />
+          }
+        </div>
       )
-    }))
-    console.log(search)
-    return (
-      <div>
-        <button onClick={decrement}>Back</button>
-        {
-          <Info details={search} click={handleBorder} />
-        }
-      </div>
-    )
+  }
+
   }
 
 export default Details;

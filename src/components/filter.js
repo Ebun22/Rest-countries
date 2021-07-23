@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 
 class Filter extends Component {
   render(){
-    const { region } = this.props
+    const { region, dropDown } = this.props
+    let className =  dropDown ? "className" : " " 
     return (
-      <div>
+      <div className={className}>
         <p onClick={region}>Africa</p>
         <p onClick={region}>America</p>
         <p onClick={region}>Asia</p>
