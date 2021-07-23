@@ -87,7 +87,6 @@ class App extends Component {
           border={border}
           handleBorder={this.HandleBorder}
           decrement = {this.decrement}
-
           />
           :
           <Countries
@@ -98,7 +97,6 @@ class App extends Component {
           handleSearch ={this.handleSearch}
           handleFilter = {this.handleFilter}
           handleClick={this.handleClick}
-
           />
         }
       </div>
